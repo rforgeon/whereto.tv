@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-
-  resources :posts
+  resources :places do
+     resources :posts, except: [:index]
+   end
 
   devise_for :users
 
