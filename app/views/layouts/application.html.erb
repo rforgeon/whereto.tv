@@ -13,6 +13,15 @@
         <li><%= link_to "Whereto.TV", root_path %></li>
         <li><%= link_to "Places", places_path %></li>
         <li><%= link_to "About", about_path %></li>
+        <div class="pull-right user-info" style="margin:10px">
+          <%if user_signed_in?%>
+            <%=current_user.email%>
+          <%else%>
+            <%= link_to "Sign In", new_user_session_path %>
+            or
+            <%= link_to "Sign Up", new_user_registration_path %>
+          <%end%>
+        </div>
 
       </ul>
 
