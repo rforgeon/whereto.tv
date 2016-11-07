@@ -13,10 +13,7 @@ class PlacesController < ApplicationController
   end
 
   def create
-     @place = Place.new
-     @place.name = params[:place][:name]
-     @place.link = params[:place][:link]
-     @place.description = params[:place][:description]
+    @place = Place.new(place_params)
 
      if @place.save
        redirect_to @place, notice: "Place was saved successfully."
@@ -33,9 +30,7 @@ class PlacesController < ApplicationController
    def update
      @place = Place.find(params[:id])
 
-     @place.name = params[:place][:name]
-     @place.link = params[:place][:link]
-     @place.description = params[:place][:description]
+     @place.assign_attributes(place_params)
 
      if @place.save
         flash[:notice] = "Place was updated."
@@ -58,5 +53,10 @@ class PlacesController < ApplicationController
      end
    end
 
+   private
+
+   def place_params
+     params.require(:place).permit(:name, :link, :description)
+   end
 
 end
