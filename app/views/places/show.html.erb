@@ -8,13 +8,14 @@
     <p class="lead"><%= @place.description %></p>
     <% @place.posts.each do |post| %>
       <div class="media">
+        <%= render partial: 'votes/voter', locals: { post: post } %>
         <div class="media-body">
           <h4 class="media-heading">
             <%= link_to post.title, place_post_path(@place, post) %>
           </h4>
           <small>
             submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email %> <br>
-             <%= post.comments.count %> Comments
+             <%= pluralize(post.comments.count, 'Comment') %> 
            </small>
         </div>
       </div>
