@@ -10,6 +10,9 @@
 <div class="row">
   <div class="col-md-8">
     <p><%= @post.body %></p>
+    <% if current_user %>
+     <%= render partial: 'favorites/favorite', locals: { post: @post } %>
+    <% end %>
     <div>
       <h3>Comments</h3>
       <%= render @post.comments %>
@@ -27,9 +30,6 @@
          </small>
        </div>
      </h3>
-     <% if current_user %>
-      <%= render partial: 'favorites/favorite', locals: { post: @post } %>
-    <% end %>
    </div>
   </div>
 <div class="col-md-4">
