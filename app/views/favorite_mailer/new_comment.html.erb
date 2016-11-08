@@ -4,15 +4,15 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>New comment to "<%= @post.title %>"</h1>
+    <h3>New comment on</h3> <h1> "<%= @post.title %>"</h1>
     <small>
-      By: <%= @comment.user.name %>
+      By: <%= @comment.user.email %>
     </small>
     <p>
-      <%= @comment.body %>
+      "<%= @comment.body.first(30) %> ..."
     </p>
     <p>
-      <%= link_to "View Comment on site", place_post_url(@post.place, @post, anchor: "comment-#{@comment.id}") %>
+      <%= link_to "View entire Comment on site", place_post_url(@post.place, @post, anchor: "comment-#{@comment.id}") %>
     </p>
   </body>
 </html>
