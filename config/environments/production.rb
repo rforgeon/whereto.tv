@@ -78,4 +78,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { host: 'whereto-tv.herokuapp.com/' }
 
+  config.assets.precompile += ['active_admin.js', 'active_admin.css', 'active_admin/print.css']
+
+  config.serve_static_assets = true
+
+
 end

@@ -9,7 +9,11 @@ class User < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  #validates :name, presence: true
+  validates :name, presence: true
+
+  def is_admin?
+    self.email && ENV['ADMIN_EMAILS'].to_s.include?(self.email)
+  end
 
   def favorite_for(post)
      favorites.where(post_id: post.id).first

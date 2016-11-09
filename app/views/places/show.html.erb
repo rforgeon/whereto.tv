@@ -18,7 +18,7 @@
             <%= link_to post.title, place_post_path(@place, post) %>
           </h4>
           <small>
-            submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email %> <br>
+            submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br>
              <%= pluralize(post.comments.count, 'Comment') %>
            </small>
         </div>

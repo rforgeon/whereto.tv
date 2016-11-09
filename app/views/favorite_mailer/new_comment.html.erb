@@ -6,7 +6,7 @@
   <body>
     <h3>New comment on</h3> <h1> "<%= @post.title %>"</h1>
     <small>
-      By: <%= @comment.user.email %>
+      By: <%= @comment.user.name %>
     </small>
     <p>
       "<%= @comment.body.first(30) %> ..."
