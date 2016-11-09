@@ -1,5 +1,10 @@
 class PlacesController < ApplicationController
 
+  helper_method :get_link_info
+
+  before_action :require_sign_in, except: [:index, :show]
+
+
   def index
     @places = Place.all
   end
@@ -52,6 +57,11 @@ class PlacesController < ApplicationController
        render :show
      end
    end
+
+   def get_link_info(link)
+    link_obj = LinkThumbnailer.generate(link)
+    return link_obj
+  end
 
    private
 

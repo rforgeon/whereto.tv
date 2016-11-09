@@ -1,5 +1,10 @@
-<div>
+<div class="media">
+  <div style='float:top'>
+    <div id="ytplayer"></div>
+  </div>
+  <div style="float:left; margin-top: 20px;">
    <%= render partial: 'votes/voter', locals: { post: @post } %>
+  </div>
    <h1>
      <%= @post.title %> <br>
      <small>
@@ -37,3 +42,38 @@
   <%= link_to "Delete Post", [@post.place, @post], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post?' } %>
   </div>
 </div>
+
+<script>
+  // Load the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Replace the 'ytplayer' element with an <iframe> and
+  // YouTube player after the API code downloads.
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+      height: '500',
+      width: '100%',
+      videoId: '<%=strip_link_id(@post.link)%>'
+    });
+  }
+
+  $(document).ready(function(){
+
+    //Check if the current URL contains '#'
+    if(document.URL.indexOf("#")==-1)
+    {
+    // Set the URL to whatever it was plus "#".
+    url = document.URL+"#";
+    location = "#";
+
+    //Reload the page
+    location.reload(true);
+
+    }
+    });
+
+</script>

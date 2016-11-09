@@ -4,6 +4,7 @@
    <div class="col-md-8">
      <% @places.each do |topic| %>
        <div class="media">
+         <%= link_to image_tag(topic.link, width: '75%'),topic %>
          <div class="media-body">
            <h4 class="media-heading">
              <%= link_to topic.name, topic %>
@@ -16,6 +17,7 @@
      <% end %>
    </div>
    <div class="col-md-4">
+     <br>
      <%= link_to "New Place", new_place_path, class: 'btn btn-success' %>
    </div>
  </div>

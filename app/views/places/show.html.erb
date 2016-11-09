@@ -8,6 +8,10 @@
     <p class="lead"><%= @place.description %></p>
     <% @place.posts.each do |post| %>
       <div class="media">
+        <div style='float:top'>
+           <%link_obj = get_link_info("#{post.link}")%>
+           <%= link_to image_tag(link_obj.images.first.src.to_s, width: '75%'),place_post_path(@place, post) %>
+         </div>
         <%= render partial: 'votes/voter', locals: { post: post } %>
         <div class="media-body">
           <h4 class="media-heading">
@@ -15,7 +19,7 @@
           </h4>
           <small>
             submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.email %> <br>
-             <%= pluralize(post.comments.count, 'Comment') %> 
+             <%= pluralize(post.comments.count, 'Comment') %>
            </small>
         </div>
       </div>

@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+  helper_method :get_link_info
+  helper_method :strip_link_id
+
   before_action :require_sign_in, except: :show
 
   def show
@@ -56,6 +59,23 @@ class PostsController < ApplicationController
         render :edit
       end
     end
+
+  def get_link_info(link)
+    link_obj = LinkThumbnailer.generate(link)
+    return link_obj
+  end
+
+  def strip_link_id(link)
+    link.reverse!
+    if link.include? '='
+      codeArray = link.split('=',2)
+    else
+      codeArray = link.split('/',2)
+    end
+    code = codeArray[0]
+    code.reverse!
+    return code
+  end
 
     private
 
