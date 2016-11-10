@@ -6,6 +6,8 @@
        <div class="media">
          <%= link_to image_tag(topic.link, width: '75%'),topic %>
          <div class="media-body">
+           <br>
+
            <h4 class="media-heading">
              <%= link_to topic.name, topic %>
            </h4>
@@ -18,6 +20,14 @@
    </div>
    <div class="col-md-4">
      <br>
-     <%= link_to "New Place", new_place_path, class: 'btn btn-success' %>
+     <%if current_user%>
+       <%if current_user.is_admin? %>
+          <%= link_to "New Place", new_place_path, class: 'btn btn-success' %>
+       <%end%>
+      <%end%>
+
+     <br>
+     <br>
+
    </div>
  </div>
