@@ -10,7 +10,7 @@
      <div class="media">
        <br />
        <% avatar_url = @user.avatar_url(128) %>
-       <% if avatar_url %>
+      <% if avatar_url %>
          <div class="media-left">
            <%= image_tag avatar_url, class: 'media-object gravatar' %>
          </div>
@@ -20,6 +20,9 @@
          <small>
            <%= pluralize(@user.posts.count, 'post') %>,
            <%= pluralize(@user.comments.count, 'comment') %>
+           <div>
+             <a target="_blank" href='https://en.gravatar.com/emails/'> Edit Profile Picture</a>
+           </div>
          </small>
        </div>
      </div>
