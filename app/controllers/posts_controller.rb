@@ -19,6 +19,8 @@ class PostsController < ApplicationController
      @place = Place.find(params[:place_id])
      @post = @place.posts.build(post_params)
      @post.user = current_user
+     current_user.votes.create(value: 0, post: @post)
+
 
      if @post.save
        flash[:notice] = "Post was saved."
