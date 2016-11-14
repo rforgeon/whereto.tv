@@ -79,6 +79,8 @@ class PostsController < ApplicationController
     return code
   end
 
+
+
     private
 
     def post_params

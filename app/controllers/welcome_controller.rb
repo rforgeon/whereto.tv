@@ -37,8 +37,12 @@ class WelcomeController < ApplicationController
     end
     videoRankArray.sort!{|x,y|y<=>x}
     videoCodeString = ''
-    videoRankArray.each do |video|
-      videoCodeString = videoCodeString+video[1]+','
+    videoRankArray.each_with_index do |video,vid_index|
+      if vid_index < 10
+        videoCodeString = videoCodeString+video[1]+','
+      else
+        return videoCodeString
+      end
     end
     return videoCodeString
   end

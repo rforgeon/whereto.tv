@@ -1,6 +1,8 @@
 class PlacesController < ApplicationController
 
   helper_method :get_link_info
+  helper_method :topPlaceVideos
+  helper_method :strip_link_id
 
   before_action :require_sign_in, except: [:index, :show]
 
@@ -61,6 +63,37 @@ class PlacesController < ApplicationController
    def get_link_info(link)
     link_obj = LinkThumbnailer.generate(link)
     return link_obj
+  end
+
+  def strip_link_id(link)
+    link.reverse!
+    if link.include? '='
+      codeArray = link.split('=',2)
+    else
+      codeArray = link.split('/',2)
+    end
+    code = codeArray[0]
+    code.reverse!
+    return code
+  end
+
+  def topPlaceVideos
+    @place = Place.find(params[:id])
+    videoRankArray = []
+    @place.posts.each do |post|
+      linkCode = strip_link_id(post.link)
+      videoRankArray.push([post.rank,linkCode])
+    end
+    videoRankArray.sort!{|x,y|y<=>x}
+    videoCodeString = ''
+    videoRankArray.each_with_index do |video,vid_index|
+      if vid_index < 5
+        videoCodeString = videoCodeString+video[1]+','
+      else
+        return videoCodeString
+      end
+    end
+    return videoCodeString
   end
 
    private
