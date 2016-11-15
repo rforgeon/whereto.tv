@@ -20,6 +20,8 @@
    </div>
    <div class="col-md-4">
      <br>
+     <%= link_to "Suggest New Place", "https://goo.gl/forms/E16ShDO8QeA4jPJE2",target: "_blank", class: 'btn btn-primary' %>
+
      <%if current_user%>
        <%if current_user.is_admin? %>
           <%= link_to "New Place", new_place_path, class: 'btn btn-success' %>

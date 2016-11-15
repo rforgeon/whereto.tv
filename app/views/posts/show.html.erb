@@ -43,7 +43,7 @@
   </div>
 <div class="col-md-4">
   <%if user_is_authorized_for_post?(@post)%>
-      <%= link_to "Edit", edit_place_post_path(@post.place, @post), class: 'btn btn-success' %>
+      <%= link_to "Edit", edit_place_post_path(@post.place, @post), class: 'btn btn-primary' %>
       <%= link_to "Delete Post", [@post.place, @post], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post?' } %>
   <%end%>
   </div>
