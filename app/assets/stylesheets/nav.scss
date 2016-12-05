@@ -22,6 +22,7 @@ ul.topnav li a {
     font-size: 17px;
 }
 
+
 /* Change background color of links on hover */
 ul.topnav li a:hover {background-color: #555;}
 
@@ -30,7 +31,7 @@ ul.topnav li.icon {display: none;}
 
 /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
 @media screen and (max-width:680px) {
-  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li:not(:first-child) {display: none; float: left; }
   ul.topnav li.icon {
     float: right;
     display: inline-block;
@@ -51,6 +52,6 @@ ul.topnav li.icon {display: none;}
   }
   ul.topnav.responsive li a {
     display: block;
-    text-align: left;
+    text-align: right;
   }
 }
