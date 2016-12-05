@@ -15,6 +15,7 @@ class Post < ActiveRecord::Base
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
   validates :link, length: { minimum: 10 }, presence: true
+  validates_format_of :link, :with => /\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9_\-]+)/i , :on => :create
   validates :place, presence: true
   validates :user, presence: true
 
