@@ -82,7 +82,9 @@ Rails.application.configure do
 
   config.serve_static_assets = true
 
-  
+  config.gem 'rack-google-analytics', :lib => 'rack/google-analytics'
+  config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-87506208-1'
+
 
 
 
