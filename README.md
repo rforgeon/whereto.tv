@@ -10,4 +10,4 @@ I recently planned a trip to Asia with friends. After figuring out the general l
 
 We went to YouTube to find travel videos that would better showcase the locations.
 
-![home screen img](https://cldup.com/xcKtMHVrAO.png)
+[![home screen img](https://cldup.com/xcKtMHVrAO.png)](http://www.wherenext.tv/)
