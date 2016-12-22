@@ -1,6 +1,6 @@
 
 
-#[wherenext.tv](http://www.wherenext.tv/)
+#[Wherenext.TV](http://www.wherenext.tv/)
 
 ##What
 Wherenext.tv is a tool to help stir up ideas for future trips, or help narrow down on great experiences in certain locations.
